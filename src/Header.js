@@ -1,3 +1,6 @@
+import header from './Header.scss';
+import React from 'react';
+
 class Header extends React.Component {
   render() {
     return(
@@ -6,4 +9,4 @@ class Header extends React.Component {
   }
 }
 
-module.exports = Header;
+export default Header
