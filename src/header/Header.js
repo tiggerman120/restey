@@ -1,12 +1,11 @@
 import header from './Header.scss';
 import React from 'react';
+import ReactJson from 'react-json-view';
 
-class Header extends React.Component {
-  render() {
+const Header = (props) => {
     return(
-      <header>Taco timers</header>
+      <ReactJson src={props.headers} />
     )
-  }
 }
 
 export default Header

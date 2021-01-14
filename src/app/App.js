@@ -15,7 +15,13 @@ class App extends React.Component {
     this.state = {
       count: 0,
       results: [],
+      headers: {},
     }
+  }
+
+  saveHeaders = (headers) => {
+    this.setState({ headers })
+    console.log(this.state.headers);
   }
 
   handleWords = e => {
@@ -37,14 +43,19 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <Header />
+        <Header 
+        headers={this.state.headers}
+        />
         <Form 
         url={"https://pokeapi.co/api/v2/pokemon"}
         giveAppResults = {this.getResults}
+        saveHeaders = {this.saveHeaders}
+        createAppResults = {this.postResults}
         />
         <Results 
         results = {this.state.results}
         count = {this.state.count}
+        headers = {this.state.saveHeaders}
         />
         <Footer />
       </>
