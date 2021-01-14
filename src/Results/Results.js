@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactJson from 'react-json-view';
+import './Results.scss';
 
 class Results extends React.Component {
   render() {
@@ -8,7 +9,7 @@ class Results extends React.Component {
         <h3>results</h3>
         <p>COUNT: { this.props.count }</p>
         <ReactJson src={ this.props.results } />
-        <p>HEADERS: {this.props.results.headers}</p>
+        <ReactJson src={ this.props.headers } />
       </div>
     )
   }
