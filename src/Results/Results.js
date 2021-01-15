@@ -4,6 +4,7 @@ import './Results.scss';
 
 class Results extends React.Component {
   render() {
+    console.log(this.props)
     return(
       <div id="resultsBox">
         <h3>results</h3>
