@@ -1,9 +1,14 @@
 import React from 'react';
 import { BrowserRouter, MemoryRouter, HashRouter, Link } from 'react-router-dom';
 import Header from '../header/Header';
+import { Route, Switch } from 'react-router-dom';
+import Main from '../main/main';
+import Home from '../home/home';
+import History from '../history/history';
 import Form from '../form/Form';
 import Footer from '../footer/Footer';
 import Results from '../Results/Results'
+import List from '../list/list';
 import './App.scss';
 
 
@@ -33,14 +38,14 @@ class App extends React.Component {
   handleClick = e => {
     e.preventDefault();
     let newWords = this.state.words.split('').reverse().join('');
-    this.setState({  words: newWords });
+    this.setState({ words: newWords });
   }
 
   getResults = (results, count) => {
     console.log(results)
     this.setState({ results })
     this.setState({ count })
-    
+
   }
 
   postResults = (results, count) => {
@@ -50,26 +55,44 @@ class App extends React.Component {
 
   render() {
     return (
-      <BrowserRouter>
-      <Link to="banana"><a href="/banana">PAGE</a></Link>
-      
+
+
       <>
-        <Header 
-        headers={this.state.headers}
+        <Header
+          headers={this.state.headers}
         />
-        <Form 
-        giveAppResults = {this.getResults}
-        saveHeaders = {this.saveHeaders}
-        postAppResults = {this.postResults}
-        />
-        <Results 
-        results = {this.state.results}
-        count = {this.state.count}
-        headers = {this.state.headers}
-        />
-        <Footer />
+        <BrowserRouter>
+
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/history">
+
+            </Route>
+            <Route path="/help">
+
+            </Route>
+          </Switch>
+          <Main />
+          <List>
+            <History />
+          </List>
+          <Form
+            giveAppResults={this.getResults}
+            saveHeaders={this.saveHeaders}
+            postAppResults={this.postResults}
+          />
+          <Results
+            results={this.state.results}
+            count={this.state.count}
+            headers={this.state.headers}
+          />
+
+          <Footer />
+        </BrowserRouter>
       </>
-      </BrowserRouter>
+
     )
   }
 }
